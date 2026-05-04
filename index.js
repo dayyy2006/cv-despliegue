@@ -3,14 +3,20 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// leer datos del formulario
 app.use(express.urlencoded({ extended: true }));
 
-// esto sirve TODO
+// servir archivos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 👇 esto fuerza la raíz (CLAVE)
+// ruta principal
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// 👇 ESTA ES LA QUE TE FALTA
+app.post('/confirmacion', (req, res) => {
+  res.redirect('/confirmacion.html');
 });
 
 app.listen(PORT, () => {
